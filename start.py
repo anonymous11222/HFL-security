@@ -87,7 +87,7 @@ attack_enable = args["attack"]["attack_enable"]
 
 
 if attack_enable or adversarial_training_enable:
-  DPA_list = ['backdoor','lable_flipping']
+  DPA_list = ['backdoor','label_flipping']
   MPA_list = ['signflip']
   AT_list = ['fgm','Spatial_Transformation']
   attack_name = args["attack"]["attack_name"] 
@@ -365,7 +365,7 @@ class Client(Node):
             (is_poison_train, poison_train_images, poison_train_labels) = attack_backdoor.generate(train_images, train_labels,  target_labels, source_labels,n_classes, percent_poison)
             num_samples = len(poison_train_images)
             
-          if attack_name == 'lable_flipping':
+          if attack_name == 'label_flipping':
         
             (poison_train_images, poison_train_labels) = attack_lableflipping.generate(train_images, train_labels)
             num_samples = len(poison_train_images)
