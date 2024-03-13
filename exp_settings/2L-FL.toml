@@ -1,0 +1,68 @@
+experimnet_id = 2
+store_folder = "path to store the trained model"
+data_path = "path to store the data"
+dataset_name = "mnist" #mnist, fashion-mnist or cifar10
+
+[topology_description]
+number_of_clients = 100
+topology_levels = 2
+topology_name = "Single_Server_FL"
+
+[topology]
+cloud0 = [ "client1", "client2", "client3","client4","client5",
+                          "client6", "client7", "client8","client9","client10",
+                          "client11", "client12", "client13","client14","client15",
+                          "client16", "client17", "client18","client19","client20",
+                          "client21", "client22", "client23","client24","client25",
+    
+                          "client26", "client27", "client28","client29","client30",
+                          "client31", "client32", "client33","client34","client35",
+                          "client36", "client37", "client38","client39","client40",
+                          "client41", "client42", "client43","client44","client45",
+                          "client46", "client47", "client48","client49","client50",
+    
+                          "client51", "client52", "client53","client54","client55",
+                          "client56", "client57", "client58","client59","client60",
+                          "client61", "client62", "client63","client64","client65",
+                          "client66", "client67", "client68","client69","client70",
+                          "client71", "client72", "client73","client74","client75",
+    
+                          "client76", "client77", "client78","client79","client80",
+                          "client81", "client82", "client83","client84","client85",
+                          "client86", "client87", "client88","client89","client90",
+                          "client91", "client92", "client93","client94","client95",
+                          "client96", "client97", "client98","client99","client100"
+                        ]
+
+
+[local_training]
+epochs = 1
+batch_size = 32
+
+[federated_training]
+aggregation_round = [120] #array of aggregation_rounds at each server-side level [level0,level1,leve2], len(aggregation_round) = topology_levels - 1
+percent_of_participats = 0.10 #exp: 0.10 means 10%
+start_training = "start" # "start" or "resume"
+resume_from_model = ""
+resume_from_round_number = 0  #if you want to resume the training  
+resume_from_training_time = ""
+
+[distillation_training]
+distillation_enable = false
+teacher_model = ""
+
+[adversarial_training]
+adversarial_training_enable = false #if true, attack_enable shold be true and attack should be configured.
+
+[attack]
+attack_enable = false
+# Write the name of the attack from these lists:
+# DPA_list = ["backdoor","label_flipping"] #note: backdoor is targted label flipping whereas label_flipping is untarget 
+# MPA_list = ["signflip"]
+# AT_list =  ["Adversarial_Patch" , "fgm", "pgd", "Saliency_Map", "Spatial_Transformation", "Square_Attack"]
+attack_name = "" #exp: "backdoor" choose one from the lists
+# write the name of malicious node in a list, malicious node should be from topology_levels-1 or topology_levels-2
+malicious_nodes = [] #exp: ["client1","client2"]
+percent_of_poison_data = 1.0
+
+
